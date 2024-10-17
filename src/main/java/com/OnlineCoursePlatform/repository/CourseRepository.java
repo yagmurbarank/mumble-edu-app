@@ -1,11 +1,14 @@
 package com.OnlineCoursePlatform.repository;
 
 import com.OnlineCoursePlatform.model.Course;
-import com.OnlineCoursePlatform.model.Tutor;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 
 import java.util.Optional;
 
-public interface CourseRepository extends JpaRepository< Course, Long> {
-    Optional<Tutor> findByTutorName(Long name);
+@Repository
+public interface CourseRepository extends JpaRepository<Course, Long> {
+    Optional<Course> findByTutorName(String tutorName);
 }
+

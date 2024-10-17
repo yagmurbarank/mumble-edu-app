@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.Valid;
+
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.HashSet;

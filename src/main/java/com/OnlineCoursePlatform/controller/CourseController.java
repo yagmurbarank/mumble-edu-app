@@ -2,9 +2,9 @@ package com.OnlineCoursePlatform.controller;
 
 import com.OnlineCoursePlatform.model.Course;
 import com.OnlineCoursePlatform.model.Student;
-import com.OnlineCoursePlatform.repository.CourseRepository;
 import com.OnlineCoursePlatform.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -39,8 +39,8 @@ public class CourseController {
 
     @GetMapping
     @PreAuthorize("hasAnyRole('STUDENT', 'TUTOR')")
-    public List<Course> getAllCourses() {
-        return courseService.getAllCourses();
+    public List<Course> getAllCourses(Long tutorId) {
+        return courseService.getAllCourses(tutorId);
     }
 
     @PostMapping("/{id}/enroll")

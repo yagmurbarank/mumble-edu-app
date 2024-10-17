@@ -1,8 +1,7 @@
 package com.OnlineCoursePlatform.service;
 
-import com.OnlineCoursePlatform.model.Course;
+
 import com.OnlineCoursePlatform.model.Tutor;
-import com.OnlineCoursePlatform.repository.CourseRepository;
 import com.OnlineCoursePlatform.repository.TutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -4,10 +4,7 @@ import com.OnlineCoursePlatform.exception.ResourceNotFoundException;
 import com.OnlineCoursePlatform.model.Course;
 import com.OnlineCoursePlatform.model.Student;
 import com.OnlineCoursePlatform.repository.CourseRepository;
-import com.OnlineCoursePlatform.repository.EnrollmentRepository;
-import com.OnlineCoursePlatform.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,7 +32,7 @@ public class CourseService {
             courseRepository.delete(course);
         }
 
-        public List<Course> getAllCourses() {
+        public List<Course> getAllCourses(Long tutotrId) {
             return courseRepository.findAll();
         }
 

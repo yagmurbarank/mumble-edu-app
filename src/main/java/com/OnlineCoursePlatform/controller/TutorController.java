@@ -1,10 +1,7 @@
 package com.OnlineCoursePlatform.controller;
 
 import com.OnlineCoursePlatform.model.Course;
-import com.OnlineCoursePlatform.model.Tutor;
 import com.OnlineCoursePlatform.service.CourseService;
-import com.OnlineCoursePlatform.service.TutorService;
-import org.hibernate.type.descriptor.jdbc.TimeUtcAsOffsetTimeJdbcType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +17,10 @@ public class TutorController {
     return courseService.createCourse(course);
 
 }
+    @GetMapping("courses/{courseId}")
+    public void getAllCoursesbyTutorId(@PathVariable Long tutotrId){
+        courseService.getAllCourses(tutotrId);
+    }
 @DeleteMapping("courses/{courseId}")
   public void deleteCourse(@PathVariable Long courseId){
     courseService.deleteCourse(courseId);

@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.management.relation.Role;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -43,4 +42,7 @@ public class User {
     private Set<Course> enrolledCourses = new HashSet<>();
 
 
+    public User( ){
+
+    }
 }

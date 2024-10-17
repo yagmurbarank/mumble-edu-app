@@ -2,7 +2,6 @@ package com.OnlineCoursePlatform.controller;
 
 import com.OnlineCoursePlatform.model.Course;
 import com.OnlineCoursePlatform.model.Enrollment;
-import com.OnlineCoursePlatform.model.Student;
 import com.OnlineCoursePlatform.service.CourseService;
 import com.OnlineCoursePlatform.service.EnrollmentService;
 import com.OnlineCoursePlatform.service.StudentService;
@@ -22,21 +21,10 @@ public class StudentController {
     private CourseService courseService;
     private EnrollmentService enrollmentService;
 
-    @GetMapping
-    public List<Student> getAllStudent(){
-        return studentService.getAllStudents();
-    }
-    @PostMapping
-    public Student createStudent(@RequestBody Student student){
-        return studentService.saveStudent(student);
-    }
-    public Student getStudentById(@RequestBody Student student){
-        return studentService.getStudentById(student.getId());
-    }
 
      @GetMapping("/{id}/courses")
-     public List<Course> getAllCourses(@PathVariable Long id) {
-            return courseService.getAllCourses();
+     public List<Course> getAllCourses(@PathVariable Long tutorId) {
+            return courseService.getAllCourses(tutorId);
         }
 
         @GetMapping("/{id}/enrolled-courses")

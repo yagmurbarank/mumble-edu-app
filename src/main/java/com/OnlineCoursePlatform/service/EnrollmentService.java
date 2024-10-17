@@ -8,8 +8,6 @@ import com.OnlineCoursePlatform.repository.CourseRepository;
 import com.OnlineCoursePlatform.repository.EnrollmentRepository;
 import com.OnlineCoursePlatform.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.validator.constraints.pl.PESEL;
-import org.springframework.aop.target.LazyInitTargetSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
