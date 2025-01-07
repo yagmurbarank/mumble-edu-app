@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
-public class UserRequestDTO {
+public class RegisterRequest {
     @NotNull(message = "Name cannot be null")
     @Size(min = 2, max = 50, message = "User name must be between 2 and 50 characters")
     private String name;

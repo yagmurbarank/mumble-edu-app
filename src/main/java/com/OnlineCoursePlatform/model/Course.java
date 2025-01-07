@@ -12,8 +12,9 @@ import java.util.Set;
 
 @Getter
 @Setter
+
 @Entity
-@Table(name="Course")
+@Table(name = "Course")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,12 +38,11 @@ public class Course {
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id")
     )
-    private Set<Student> students= new HashSet<>();
+    private Set<Student> students = new HashSet<>();
 
     @OneToMany
     @JoinColumn(name = "course")
     private Set<Enrollment> enrollments;
-
 
 
 }

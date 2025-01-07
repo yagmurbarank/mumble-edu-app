@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name="Enrollment")
+@Table(name = "Enrollment")
 public class Enrollment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,6 @@ public class Enrollment {
 
 
     private LocalDate enrollmentDate;
-
 
 
 }

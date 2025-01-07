@@ -16,10 +16,11 @@ public class CourseController {
 
     private final CourseService courseService;
 
-    public  CourseController(CourseService courseService){
+    public CourseController(CourseService courseService) {
 
         this.courseService = courseService;
     }
+
     @PostMapping
     @PreAuthorize("hasRole('TUTOR')")
     public ResponseEntity<Course> createCourse(@RequestBody CourseCreateRequest courseCreateRequest) {

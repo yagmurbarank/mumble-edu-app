@@ -1,9 +1,8 @@
 package com.OnlineCoursePlatform.controller;
 
 import com.OnlineCoursePlatform.model.User;
-import com.OnlineCoursePlatform.model.request.UserRequestDTO;
+import com.OnlineCoursePlatform.model.request.RegisterRequest;
 import com.OnlineCoursePlatform.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,6 @@ public class RegisterController {
 
      private final UserService userService;
 
-    @Autowired
     public RegisterController(UserService userService) {
 
         this.userService = userService;
@@ -25,12 +23,12 @@ public class RegisterController {
 
 
     @PostMapping("/register")
-    public User addUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
+    public User addUser(@Valid @RequestBody RegisterRequest registerRequest) {
         User user = new User();
-        user.setName(userRequestDTO.getName());
-        user.setEmail(userRequestDTO.getEmail());
-        user.setPassword(userRequestDTO.getPassword());
-        user.setRole(userRequestDTO.getRole());
+        user.setName(registerRequest.getName());
+        user.setEmail(registerRequest.getEmail());
+        user.setPassword(registerRequest.getPassword());
+        user.setRole(registerRequest.getRole());
         return userService.addUser(user);
     }
 }

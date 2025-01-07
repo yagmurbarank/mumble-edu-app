@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name="Student")
+@Table(name = "Student")
 @EqualsAndHashCode(callSuper = true)
 public class Student extends User {
 
@@ -21,5 +21,10 @@ public class Student extends User {
 
     public Student(Long id, @NotNull(message = "Name cannot be null") @Size(min = 2, max = 50, message = "User name must be between 2 and 50 characters") String username, @NotNull(message = "Email cannot be null") @Email(message = "Email should be valid") String email, String password, String role, Set<Course> enrollments) {
         super(id, username, email, password, role, enrollments);
+    }
+
+
+    public Student() {
+
     }
 }
