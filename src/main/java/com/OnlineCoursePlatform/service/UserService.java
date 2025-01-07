@@ -4,10 +4,6 @@ import com.OnlineCoursePlatform.exception.ValidationException;
 import com.OnlineCoursePlatform.model.User;
 import com.OnlineCoursePlatform.repository.UserRepository;
 
-
-import lombok.RequiredArgsConstructor;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,19 +17,21 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
-    @Autowired
+
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
+    public UserService(UserRepository userRepository){
+
+    this.userRepository=userRepository;
+
     }
-//    public User addUser(User user){
-//        return userRepository.save(user);
-//    }
+    public List<User> getAllUsers(){
+         return userRepository.findAll();
+    }
+
 public User addUser(User user) {
     if (userRepository.existsByEmail(user.getEmail())){
         throw new ValidationException("This user already exists.");
@@ -43,6 +41,7 @@ public User addUser(User user) {
     return savedUser;
 }
     public void deleteUser(Long userId){
+
         userRepository.deleteById(userId);
     }
 

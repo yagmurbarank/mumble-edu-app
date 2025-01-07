@@ -3,19 +3,24 @@ package com.OnlineCoursePlatform.service;
 import com.OnlineCoursePlatform.exception.ResourceNotFoundException;
 import com.OnlineCoursePlatform.model.Course;
 import com.OnlineCoursePlatform.model.Student;
+import com.OnlineCoursePlatform.model.request.CourseCreateRequest;
 import com.OnlineCoursePlatform.repository.CourseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class CourseService {
-    @Autowired
 
-        private CourseRepository courseRepository;
-        private EnrollmentService enrollmentService;
-        private StudentService studentService;
+
+    private final CourseRepository courseRepository;
+    private final EnrollmentService enrollmentService;
+
+    public CourseService(CourseRepository courseRepository, EnrollmentService enrollmentService) {
+        this.courseRepository = courseRepository;
+        this.enrollmentService = enrollmentService;
+
+    }
 
         public Course createCourse(Course course) {
             return courseRepository.save(course);
@@ -27,14 +32,14 @@ public class CourseService {
             return courseRepository.save(course);
         }
 
-        public void deleteCourse(Long id) {
-            Course course = courseRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Course not found"));
-            courseRepository.delete(course);
-        }
+    public void deleteCourse(Long id) {
+        Course course = courseRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Course not found"));
+        courseRepository.delete(course);
+    }
 
-        public List<Course> getAllCourses(Long tutotrId) {
-            return courseRepository.findAll();
-        }
+    public List<Course> getAllCourses(Long tutorId) {
+        return courseRepository.findAll();
+    }
 
     public Course enrollCourse(Long courseId, Student student) {
         Course course = courseRepository.findById(courseId)
@@ -46,6 +51,6 @@ public class CourseService {
 
         return course;
     }
-    }
+}
 
 

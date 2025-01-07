@@ -7,27 +7,26 @@ import com.OnlineCoursePlatform.model.Student;
 import com.OnlineCoursePlatform.repository.CourseRepository;
 import com.OnlineCoursePlatform.repository.EnrollmentRepository;
 import com.OnlineCoursePlatform.repository.StudentRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDate;
-import java.util.Date.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.Date.*;
 
 @Service
-@RequiredArgsConstructor
 public class EnrollmentService {
 
-@Autowired
-private EnrollmentRepository enrollmentRepository;
+
+private final EnrollmentRepository enrollmentRepository;
 private final CourseRepository courseRepository;
 private final StudentRepository studentRepository;
-
+public EnrollmentService(EnrollmentRepository enrollmentRepository, CourseRepository courseRepository, StudentRepository studentRepository){
+    this.enrollmentRepository=enrollmentRepository;
+    this.courseRepository=courseRepository;
+    this.studentRepository=studentRepository;
+}
     public List<Enrollment> getAllEnrollments(){
         return enrollmentRepository.findAll();
     }
@@ -63,7 +62,7 @@ private final StudentRepository studentRepository;
 
             return enrollmentRepository.save(enrollment);
         }
-    public void unenrollStudent(Long courseId, Long studentId) {
+    public void withdrawCourse(Long courseId, Long studentId) {
         Enrollment enrollment = enrollmentRepository.findByCourseIdAndStudentId(courseId, studentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Enrollment not found"));
         enrollmentRepository.delete(enrollment);
